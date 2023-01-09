@@ -33,32 +33,32 @@ Plotly.d3.csv('https://raw.githubusercontent.com/hmooreo/downtownrecovery/main/d
                 styles: {
                     Canada: {
                         line: {
-                            color: '#DC4633'
+                            color: '#e41a1c'
                         }
                     },
                     Midwest: {
                         line: {
-                            color: '#6FC7EA'
+                            color: '#377eb8'
                         }
                     },
                     Northeast: {
                         line: {
-                            color: '#8DBF2E'
+                            color: '#4daf4a'
                         }
                     },
                     Pacific: {
                         line: {
-                            color: '#00A189'
+                            color: '#984ea3'
                         }
                     },
                     Southeast: {
                         line: {
-                            color: '#AB1368'
+                            color: '#ff7f00'
                         }
                     },
                     Southwest: {
                         line: {
-                            color: '#F1C500'
+                            color: '#e6ab02'
                         }
                     }
                 }

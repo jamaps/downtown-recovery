@@ -1,7 +1,7 @@
 
 
 // load in data
-Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recovery/main/docs/model_data_metrics.csv', function (err, rows) {
+d3.csv('https://raw.githubusercontent.com/hmooreo/downtownrecovery/cuebiq_update/docs/model_data_full_cuebiq_update.csv', function (err, rows) {
 
     function unpack(rows, key) {
         return rows.map(function (row) { return row[key]; });
@@ -44,32 +44,32 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                 styles: {
                     Canada: {
                         line: {
-                            color: '#DC4633'
+                            color: '#ab1368'
                         }
                     },
                     Midwest: {
                         line: {
-                            color: '#6FC7EA'
+                            color: '#007fa3'
                         }
                     },
                     Northeast: {
                         line: {
-                            color: '#8DBF2E'
+                            color: '#8dbf2e'
                         }
                     },
                     Pacific: {
                         line: {
-                            color: '#00A189'
+                            color: '#6d247a'
                         }
                     },
                     Southeast: {
                         line: {
-                            color: '#AB1368'
+                            color: '#dc4633'
                         }
                     },
                     Southwest: {
                         line: {
-                            color: '#F1C500'
+                            color: '#e6ab02'
                         }
                     }
                 }
@@ -120,16 +120,16 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
             plot_bgcolor: 'rgba(0,0,0,0)',
             paper_bgcolor: 'rgba(0,0,0,0)',
             title: {
-                text: y_val.toProperCase() + ' Recovery -- ' + season.options[season.selectedIndex].text,
+                text: y_val.toProperCase() + ' recovery: ' + season.options[season.selectedIndex].text,
 
                 font: {
                     color: '#ffffff',
                     family: 'Open Sans, monospace',
-                    size: 18
+                    size: 14
                 }
             },
             xaxis: {
-                gridcolor: '#4f4f4f',
+                gridcolor: '#bdbdbd',
                 tickfont: {
                     family: 'Open Sans, monospace',
                     size: 12,
@@ -148,7 +148,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                 }
             },
             yaxis: {
-                gridcolor: '#4f4f4f',
+                gridcolor: '#bdbdbd',
                 showticklabels: true,
                 tickformat: ".0%",
                 tickfont: {
