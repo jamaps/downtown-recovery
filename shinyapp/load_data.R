@@ -14,7 +14,11 @@ library(glue)
 library(stringr)
 library(ggrepel)
 library(ggpmisc)
+library(shiny.router)
 library(ggiraph)
+library(shinyLP)
+library(shinyBS)
+library(crosstalk)
 library(zoo)
 library(tidyverse)
 library(broom)
@@ -22,13 +26,16 @@ library(dplyr)
 library(htmlwidgets)
 library(leaflet)
 library(scales)
+library(shiny)
+library(shinyWidgets)
+library(shinythemes)
 library(sf)
 library(sp)
 library(spdep)
 library(plotly)
 library(geojsonio)
-setwd("E:\\git/downtown-recovery/shinyapp")
-explanatory_vars <- read.csv("input_data/updated_model_features.csv")
+setwd("E:\\git/downtownrecovery/shinyapp")
+explanatory_vars <- read.csv("input_data/all_model_features_1015_weather.csv")
 
 # 2022-07-15: updates: anything pertaining to single city map tab has been removed
 # this is a 'policy brief only' version of the app
@@ -198,12 +205,16 @@ named_factors <- c(
   "Number of days with required cancellation of all events" = "days_cancel_all_events",
   "Number of days with stay at home requirements" = "days_stay_home_requirements",
   "Number of days with income support policy" = "days_income_support",
-  "Number of days with mask mandates" = "days_mask_mandates"
+  "Number of days with mask mandates" = "days_mask_mandates",
   # political leaning - city level
   #"Percentage Liberal Leaning" = "pct_liberal_leaning",
   #"Percentage Conservative Leaning" = "pct_conservative_leaning"
   # "Percentage Other Leaning" = "pct_other"
   #weather - all at city level
+  "Average Winter Temperature (F)" = "winter_avg_temp",
+  "Average Spring Temperature (F)" = "spring_avg_temp",
+  "Average Summer Temperature (F)" = "summer_avg_temp",
+  "Average Fall Temperature (F)" = "fall_avg_temp"
 )
 
 # 2022/07/15 update: everything is a 3 month season
@@ -216,7 +227,9 @@ named_periods <- c(
   "Summer: June 2021 - Aug 2021" = "Season_6",
   "Fall: Sept 2021 - Nov 2021" = "Season_7",
   "Winter: Dec 2021 - Feb 2022" = "Season_8",
-  "Spring: Mar 2022 - May 2022" = "Season_9"
+  "Spring: Mar 2022 - May 2022" = "Season_9",
+  "Summer: June 2022 - Aug 2022" = "Season_10",
+  "Fall: Sept 2022 - Nov 2022" = "Season_11"
   
 )
 
