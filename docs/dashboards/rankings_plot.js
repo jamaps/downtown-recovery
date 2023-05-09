@@ -98,8 +98,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
             }],
             text: unpack(Object.values(rows).filter(item => ((item.Season === season.value) && (item.metric === metric))), 'display_title'),
             texttemplate:
-            "<b>%{y} %{text} : </b> %{x}<br>",
-            textposition: 'inside',
+            "%{text}: %{x}<br>",
+            textposition: 'auto',
             marker: {
                 color: unpack(Object.values(rows).filter(item => ((item.Season === season.value) && (item.metric === metric))), 'color'),
                 size: 50,
@@ -110,8 +110,12 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                 }
             },
             insidetextfont: {
-                size: 64
-            }
+               size: 12
+            },
+            outsidetextfont: {
+                size: 12,
+                color: '#ffffff'
+             }
             //width: 3
             //offset: 5
         }];
@@ -120,20 +124,22 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
             plot_bgcolor: 'rgba(0,0,0,0)',
             paper_bgcolor: 'rgba(0,0,0,0)',
             hovermode: 'closest',
-            height: 1800,
+            height:1800,
+            //width:'100vw',
             title: {
                 text: metric.toProperCase() + ' Recovery -- ' + season.options[season.selectedIndex].text,
                 font: {
                     color: '#ffffff',
                     family: 'Open Sans, monospace',
-                    size: 18
+                    size: 12
                 }
+                
             },
             xaxis: {
                 gridcolor: '#5c5c5c',
                 tickfont: {
                     family: 'Open Sans, monospace',
-                    size: 12,
+                    size: 10,
                     color: '#ffffff'
                   },
                 tickformat: ".0%",
@@ -142,29 +148,22 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                     text: 'Recovery value',
                     font: {
                         family: 'Open Sans, monospace',
-                        size: 12,
+                        size: 10,
                         color: '#ffffff'
                     }
                 }
             },
             yaxis: {
                 showticklabels: true,
+                dtick:5,
                 tickfont: {
                     family: 'Open Sans, monospace',
-                    size: 12,
+                    size: 10,
                     color: '#ffffff'
                   },
                 autorange: 'reversed',
-             
-                title: {
-                    text: 'Ranking',
-                    font: {
-                        family: 'Open Sans, monospace',
-                        size: 12,
-                        color: '#ffffff'
-                    }
-                }
             },
+            
             legend: {
                 "orientation": "h",
                 x:0,
@@ -173,11 +172,15 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                 yanchor:'bottom',
                 font: {
                     family: 'Open Sans, monospace',
-                    size: 12,
+                    size: 10,
                     color: '#ffffff'
                 }
             },
-            bargap:2
+            bargap:2,
+            margin: {
+                l:20,
+                r:0
+            }
         };
 
         var config = {

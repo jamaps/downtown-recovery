@@ -91,17 +91,18 @@ div.plot-container#patterns-plot iframe{
 }
 
 
-div.plot-container#rankings-plot{
-  position: absolute;
+div.plot-container#rankings-plot {
+  position:relative;
   overflow:scroll;
-  display:inline;
-  height:100%;
-  width:80%;
-  border: none;
+  height:1800;
+  width:100vw;
+  display:block;
+  padding:0;
+  border:none;
 }
 
 div.plot-container#rankings-plot iframe{
-  position: absolute;
+  position: relative;
   overflow:scroll;
   display:inline;
   height:100%;

@@ -98,7 +98,9 @@
 
   <main>
       <div class="row">
-        <div class="col-2">
+
+        <!--
+        <div class="col-4">
           <div class="accordion" id="accordionContainer">
 
             <div class="accordion-item">
@@ -167,9 +169,12 @@
               </div>
             </div>
           </div>
+          </div>
+          -->
+          <div class="col-6">
           <div class="row-chart">
             <div  class="section level4">
-            <h5>Select recovery metric:</h5>
+            <p>Select recovery metric:</p>
     
             <select name="select_ranking_metric" id="select_ranking_metric">
               <option value="downtown">Downtown</option>
@@ -178,9 +183,11 @@
             </select>
           </div>
           </div>
+          </div>
+          <div class="col-6">
           <div class="row-chart">
           <div class="section level4">
-            <h5>Select comparison period:</h5>
+            <p>Select comparison period:</p>
        
             <select name="select_ranking_season" id="select_ranking_season" style="width:75%; height:75%;">
               <option value="Season_1">Spring: Mar 2020 - May 2020</option>
@@ -199,17 +206,16 @@
             </div>
           </div>
         </div>
-       
-        
-    
-   
-        <div class="col-12">
-          <div class="plot-container" id="rankings-plot"></div>
-        </div>
       </div>
+      </div>
+     
+      <div class="plot-container" id="rankings-plot"></div>
+       
   </main>
 
 </body>
+<script src="../dashboards/dashboards.js"></script>
 <script src="../dashboards/rankings_plot.js"></script>
+
 
 </html>
