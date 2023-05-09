@@ -36,6 +36,16 @@ body {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
 */
+
+@media screen and (max-width: 736px) {
+  
+  
+  body, input, select, textarea {
+    font-size: 11pt;
+    letter-spacing: 0.0375em;
+  }
+
+}
 /*
  * containers for map dashboard
  */
@@ -116,3 +126,4 @@ div.plot-container#explanatory-plot iframe{
   width:100%;
   border: none;
 }
+

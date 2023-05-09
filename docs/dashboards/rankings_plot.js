@@ -182,7 +182,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
 
         var config = {
             responsive: true,
-            //displayModeBar: false
+            displayModeBar: false
         }
         Plotly.react(plotDiv, trace, layout, config);
     };
