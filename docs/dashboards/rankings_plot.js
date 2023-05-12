@@ -13,19 +13,19 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
     };
 
     const update_seasons = ["Season_10", "Season_11", "Season_12"];
-    var seasonSelector = document.getElementById('select_ranking_season');
+    var seasonSelector = document.getElementById('select_season');
 
     seasonSelector.addEventListener('change', function(e) {
-        if (update_seasons.includes(seasonSelector.value) & (document.getElementById('select_ranking_metric').value != "downtown")) {
-            document.getElementById('select_ranking_metric').value = "downtown";
+        if (update_seasons.includes(seasonSelector.value) & (document.getElementById('select_metric').value != "downtown")) {
+            document.getElementById('select_metric').value = "downtown";
         }
       });
 
     
 
-    document.getElementById('select_ranking_metric').addEventListener('change', function(e) {
-        if (update_seasons.includes(seasonSelector.value) & (document.getElementById('select_ranking_metric').value != "downtown")) {
-            document.getElementById('select_ranking_metric').value = "downtown";
+    document.getElementById('select_metric').addEventListener('change', function(e) {
+        if (update_seasons.includes(seasonSelector.value) & (document.getElementById('select_metric').value != "downtown")) {
+            document.getElementById('select_metric').value = "downtown";
         }
       });
 
@@ -33,7 +33,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
 
 
 
-    var metricSelector = document.getElementById('select_ranking_metric');
+    var metricSelector = document.getElementById('select_metric');
     
 
     function rankDuplicate(arr) {

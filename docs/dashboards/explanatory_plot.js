@@ -15,7 +15,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
     const update_seasons = ["Season_10", "Season_11", "Season_12"];
 
     
-    var seasonSelector = document.getElementById('select_explanatory_season');
+    var seasonSelector = document.getElementById('select_season');
     var xSelector = document.getElementById('x_vars');
 
     seasonSelector.addEventListener('change', function(e) {

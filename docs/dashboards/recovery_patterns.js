@@ -12,7 +12,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
         return this.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
     };
 
-    const metricSelector = document.getElementById('select_pattern_metric');
+    const metricSelector = document.getElementById('select_metric');
 
     const resetCityButton = document.getElementById('patterns_cities');
 
