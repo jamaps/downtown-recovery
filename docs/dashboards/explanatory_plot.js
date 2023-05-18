@@ -52,8 +52,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
             y: unpack(Object.values(rows).filter(item =>  (item.Season === season.value) && (item.display_title === city)), y_val),
             type: 'scatter',
             mode: 'markers+text',
-           
-            visible: 'legendonly',       
+            showlegend: false,
+            visible: true,       
             transforms: [{
                 type: 'groupby',
                 groups: unpack(Object.values(rows).filter(item => (item.Season === season.value) && (item.display_title === city)), 'region'),
@@ -187,7 +187,8 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                     size: 12,
                     color: '#ffffff'
                 }
-            }
+            },
+            height: 1800
         };
 
         var config = {
@@ -234,7 +235,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
     xSelector.addEventListener('change', updateX, false);
 
     metricSelector.addEventListener('change', updateMetric, false);
-    resetCityButton.addEventListener('click', resetCities, false);
+    //resetCityButton.addEventListener('click', resetCities, false);
     seasonSelector.addEventListener('change', updateSeason, false);
 
     initScatterPlot(metricSelector.value, xSelector.value, xSelector.options[xSelector.selectedIndex].text, seasonSelector, initCities);

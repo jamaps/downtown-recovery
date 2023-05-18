@@ -82,16 +82,6 @@ div.map-container iframe{
   border: none;
 }
 
-div.plot-container#patterns-plot iframe{
-  position: absolute;
-  overflow: hidden;
-  display: inline;
-  height:100%;
-  width:100%;
-  border: none;
-}
-
-
 div.plot-container#rankings-plot {
   position:relative;
   overflow:scroll;
@@ -102,22 +92,15 @@ div.plot-container#rankings-plot {
   border:none;
 }
 
-div.plot-container#rankings-plot iframe{
-  position: relative;
-  overflow:scroll;
-  display:inline;
-  height:100%;
-  width:100%;
-  border: none;
-}
-
 div.plot-container#explanatory-plot{
-  position: absolute;
+  position: relative;
   overflow:auto;
   display:inline;
-  height:100%;
-  width:100%;
-  border: none;
+  height:100vh;
+  width:100vw;
+  display:block;
+  padding:0;
+  border:none;
 }
 
 div.plot-container#explanatory-plot iframe{

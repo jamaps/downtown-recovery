@@ -1,4 +1,4 @@
-
+// there is a hard cutoff of 23 cities that will display consecutively when hovering in plotly
 
 // load in data
 Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recovery/stoppers_hll_update/docs/all_weekly_metrics_plot_cuebiq_update_hll.csv', function (err, rows) {
