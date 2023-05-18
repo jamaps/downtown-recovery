@@ -158,21 +158,23 @@
           </div>
           </div>
           -->
-          <div class="col-3">
-          <div class="section level2">
-            <p>Select recovery metric: <select name="select_metric" id="select_metric">
-              <option value="downtown">Downtown</option>
+          
+          <div class="section level4">
+            <div class="row">
+            <div class="col-6">
+            <p>Select recovery metric: </p> <select name="select_metric" id="select_metric">
+              <!--<option value="downtown">Downtown</option>
               <option value="city">City</option>
-              <option value="relative">Relative</option>
-            </select></p>
-        
+              <option value="relative">Relative</option>-->
+            </select>
           </div>
-          
+            <div class="col-6"><button name="patterns_cities" class="btn btn-secondary" data-toggle="button" aria-pressed="true" id="patterns_cities">Reset city selection</button>
+        
+            </div>
+           
+         
         </div>
-        <div class="col-3">
-          <div class="section level2">
-            <p>Click to reset city selection: <button name="patterns_cities" class="btn btn-secondary" data-toggle="button" aria-pressed="true" id="patterns_cities">Reset</button></p>
-          
+        </div>
 
             <!--<optgroup label="Canada">
             <option value="Calgary">Calgary, AB</option>
@@ -380,9 +382,7 @@
 
             </optgroup>
           </select>-->
-      
-        </div>
-      </div>
+    
       </div>
 
         <div class="container-fluid">
@@ -394,7 +394,7 @@
 
 
   </main>
-  <script src="../dashboards/components.js"></script>
+  <script src="../dashboards/dashboard.js"></script>
   <script src="../dashboards/recovery_patterns.js"></script>
 </body>
 
