@@ -18,19 +18,24 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
 
     const initCities = Array("Toronto, ON", "Chicago, IL", "New York, NY", "San Francisco, CA", "Atlanta, GA", "Salt Lake City, UT");
 
-    const all_cities = unpack(Object.values(rows).filter(item => ((item.metric === metricSelector.value) &&
-    (item.week === '2022-01-31'))), 'display_title');
+    //const all_cities = unpack(Object.values(rows).filter(item => ((item.metric === metricSelector.value) &&
+    //(item.week === '2022-01-31'))), 'display_title');
+    
+ 
 
-    function createCityTrace(y_val, city) {
+    function createCityTrace(y_val, city, i, data_to_filter) {
         var trace = {
-            x: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'week'),
-            y: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'rolling_avg'),
+            x: unpack(Object.values(data_to_filter).filter(item =>(item.display_title === city)), 'week'),
+            y: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'rolling_avg'),
             type: 'scatter',
             mode: 'lines',
             visible: 'legendonly',       
+            legendrank:i,
+            color: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'color'),
+            
             transforms: [{
                 type: 'groupby',
-                groups: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'region'),
+                groups: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'region'),
                 styles: {
                     Canada: {
                         line: {
@@ -67,14 +72,14 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
             }
         ],
         line: {
-            color: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'color'),
+            color: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'color'),
             width: 3,
             shape: 'spline'
         },
-        legendgroup: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'region'),
-        name: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'display_title'),
+        legendgroup: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'region'),
+        name: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'display_title'),
     
-        text: unpack(Object.values(rows).filter(item => (item.metric === y_val) && (item.display_title === city)), 'display_title'),
+        text: unpack(Object.values(data_to_filter).filter(item =>  (item.display_title === city)), 'display_title'),
         hoverinfo:"x+y",
             hovertemplate:
             "<b>City: </b>%{text}<br>" +
@@ -89,9 +94,17 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
 
     function initLinePlot(y_val, city_array) {
         
+        const subsetRows = Object.values(rows).filter(item => item.metric == y_val);
+
+    var maxDate = subsetRows[subsetRows.length - 1]['week'];
+
+    var lastWeek = Object.values(subsetRows).filter(item => item.week == maxDate);
+
+    lastWeek.sort((a, b) => parseFloat(b.rolling_avg) - parseFloat(a.rolling_avg));
+        const sortedCities = unpack(Object.values(lastWeek), 'display_title');
         var data = [];
-        for (var i=0; i < all_cities.length; i++) {
-            data[i] = createCityTrace(y_val, all_cities[i])
+        for (var i=0; i < sortedCities.length; i++) {
+            data[i] = createCityTrace(y_val, sortedCities[i], i, subsetRows)
 
         }
         var layout = {
@@ -108,7 +121,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
             xaxis: {
                 gridcolor: '#4f4f4f',
                 showticklabels: true,
-                range: ['2020-05-10', '2023-04-10'],
+                range: ['2020-05-10', maxDate],
                 tickfont: {
                     family: 'Open Sans, monospace',
                     size: 12,
@@ -148,7 +161,9 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
                     size: 12,
                     color: '#ffffff'
                 }
-            }
+            },
+            height:900
+            
         };
 
         var config = {
@@ -163,7 +178,7 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
         for (var i=0; i < city_array.length; i++) {
             highlighted_cities.push(city_array[i]);
         }
-        var indices = all_cities.map(elem => highlighted_cities.includes(elem)).reduce(
+        var indices = sortedCities.map(elem => highlighted_cities.includes(elem)).reduce(
             (out, bool, index) => bool ? out.concat(index) : out, 
             []
           );
@@ -186,6 +201,15 @@ Plotly.d3.csv('https://raw.githubusercontent.com/schoolofcities/downtown-recover
     resetCityButton.addEventListener('click', resetCities, false);
 
     metricSelector.addEventListener('change', updateMetric, false);
+
+    const subsetRows = Object.values(rows).filter(item => item.metric == metricSelector.value);
+
+    var maxDate = subsetRows[subsetRows.length - 1]['week'];
+
+    var lastWeek = Object.values(subsetRows).filter(item => item.week == maxDate);
+
+    lastWeek.sort((a, b) => parseFloat(b.rolling_avg) - parseFloat(a.rolling_avg));
+    
 
     initLinePlot(metricSelector.value, initCities);
 });

@@ -73,11 +73,12 @@ div.map-container iframe{
  */
 
  div.plot-container#patterns-plot {
-  position: absolute;
-  overflow: hidden;
-  display: inline;
-  height:100%;
-  width:100%;
+  position: relative;
+  overflow: scroll;
+  display: block;
+  height:900;
+  width:100vw;
+  padding:0;
   border: none;
 }
 

@@ -91,6 +91,8 @@
 
   <main>
       <div class="row">
+
+        <!--
         <div class="col-6">
           <div class="accordion" id="accordionContainer">
             <div class="accordion-item">
@@ -155,21 +157,22 @@
             </div>
           </div>
           </div>
+          -->
           <div class="col-3">
           <div class="section level2">
-            <h5>Select recovery metric:</h5>
+            <p>Select recovery metric: <select name="select_metric" id="select_metric">
+              <option value="downtown">Downtown</option>
+              <option value="city">City</option>
+              <option value="relative">Relative</option>
+            </select></p>
         
           </div>
-          <select name="select_metric" id="select_metric">
-            <option value="downtown">Downtown</option>
-            <option value="city">City</option>
-            <option value="relative">Relative</option>
-          </select>
+          
         </div>
         <div class="col-3">
           <div class="section level2">
-            <h5>Click to reset city selection:</h5>
-          <button name="patterns_cities" class="btn btn-secondary" data-toggle="button" aria-pressed="true" id="patterns_cities">Reset</button>
+            <p>Click to reset city selection: <button name="patterns_cities" class="btn btn-secondary" data-toggle="button" aria-pressed="true" id="patterns_cities">Reset</button></p>
+          
 
             <!--<optgroup label="Canada">
             <option value="Calgary">Calgary, AB</option>
